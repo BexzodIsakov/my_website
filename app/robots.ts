@@ -1,13 +1,15 @@
-import type { MetadataRoute } from 'next'
- 
+import type { MetadataRoute } from "next";
+
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || "https://bexzodisakov.dev";
+
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/private/',
+      userAgent: "*",
+      allow: "/",
+      disallow: "/private/",
     },
-    sitemap: 'https://bekzodisakov.vercel.app/sitemap.xml',
-    
-  }
+    sitemap: `${baseUrl}/sitemap.xml`,
+  };
 }
