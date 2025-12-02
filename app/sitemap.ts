@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || "https://bexzodisakov.dev/";
+    process.env.NEXT_PUBLIC_BASE_URL || "https://bexzodisakov.dev";
 
   return [
     {
@@ -27,13 +27,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/posts`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.4,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.2,
+      priority: 0.6,
     },
   ];
 }
