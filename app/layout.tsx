@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+import Analytics from "@/components/Analytics";
 
 import "./globals.css";
 import { Header, Footer } from "@/components";
@@ -9,7 +9,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bekzod Isakov",
+  title: "Bexzod Isakov",
   description: "Personal portfolio",
   verification: { google: "LszkQ400U6C7Ncd88Bpbug7Cje-UmHdXkA6zut-P" },
 };
@@ -22,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className={inter.className}>
+        <Analytics />
         <ThemeProvider attribute='class' themes={["light", "dark"]}>
           <div className='min-h-screen custom-container mx-auto flex flex-col overflow-x-hidden sm:gap-8'>
             <Header />
@@ -31,7 +32,6 @@ export default function RootLayout({
             {/* </div> */}
           </div>
         </ThemeProvider>
-        <Analytics />
       </body>
     </html>
   );
