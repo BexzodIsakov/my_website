@@ -71,7 +71,7 @@ export default function AnalyticsDashboard() {
               </tr>
             </thead>
             <tbody>
-              {stats.topPages.map(([page, count]) => (
+              {stats.topPages.map(([page, count]: [string, number]) => (
                 <tr key={page} className='border-b'>
                   <td className='py-2'>{page}</td>
                   <td className='text-right'>{count}</td>
@@ -95,7 +95,7 @@ export default function AnalyticsDashboard() {
               </tr>
             </thead>
             <tbody>
-              {stats.topReferrers.map(([ref, count]) => (
+              {stats.topReferrers.map(([ref, count]: [string, number]) => (
                 <tr key={ref} className='border-b'>
                   <td className='py-2'>{ref}</td>
                   <td className='text-right'>{count}</td>

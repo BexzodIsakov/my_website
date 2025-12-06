@@ -21,14 +21,19 @@ export async function POST(request: NextRequest) {
     };
 
     // send to Supabase
+    const supabaseKey = process.env.SUPABASE_ANON_KEY;
+    if (!supabaseKey) {
+      throw new Error("SUPABASE_ANON_KEY is not configured");
+    }
+
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/pageviews`,
       {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          apikey: process.env.SUPABASE_ANON_KEY,
-          Authorization: `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+          apikey: supabaseKey,
+          Authorization: `Bearer ${supabaseKey}`,
           Prefer: "return=minimal",
         },
         body: JSON.stringify(trackingData),
