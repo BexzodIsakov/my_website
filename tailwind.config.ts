@@ -9,9 +9,12 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
       outlineOffset: {
-        3: '3px',
-      }
+        3: "3px",
+      },
     },
   },
   plugins: [],

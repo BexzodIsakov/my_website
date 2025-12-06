@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import Analytics from "@/components/Analytics";
 
 import "./globals.css";
 import { Header, Footer } from "@/components";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Bexzod Isakov",
@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={inter.className}>
+      <body>
         <Analytics />
         <ThemeProvider attribute='class' themes={["light", "dark"]}>
           <div className='min-h-screen custom-container mx-auto flex flex-col overflow-x-hidden sm:gap-8'>
