@@ -26,22 +26,33 @@ export async function POST(request: NextRequest) {
       throw new Error("SUPABASE_ANON_KEY is not configured");
     }
 
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SUPABASE_URL}/rest/v1/pageviews`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          apikey: supabaseKey,
-          Authorization: `Bearer ${supabaseKey}`,
-          Prefer: "return=minimal",
-        },
-        body: JSON.stringify(trackingData),
-      }
-    );
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    if (!supabaseUrl) {
+      throw new Error("NEXT_PUBLIC_SUPABASE_URL is not configured");
+    }
+
+    const response = await fetch(`${supabaseUrl}/rest/v1/pageviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+        Prefer: "return=minimal",
+      },
+      body: JSON.stringify(trackingData),
+    });
 
     if (!response.ok) {
-      throw new Error("Failed to track pageview");
+      const errorText = await response.text();
+      console.error("Supabase API error:", {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorText,
+        url: `${supabaseUrl}/rest/v1/pageviews`,
+      });
+      throw new Error(
+        `Failed to track pageview: ${response.status} ${response.statusText}`
+      );
     }
 
     return NextResponse.json({ success: true });
