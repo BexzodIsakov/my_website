@@ -1,7 +1,7 @@
 import Card from "@/components/Card";
 import { projects } from "@/lib/constants";
 
-export default function PorjectsPage() {
+export default function ProjectsPage() {
   return (
     <div>
       <h1 className='mb-8'>Projects</h1>

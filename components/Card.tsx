@@ -1,6 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
-import ArrowRightIcon from "@/public/assets/arrow-right.svg";
+
+function ArrowRightIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      fill='none'
+      viewBox='0 0 24 24'
+      strokeWidth='1.5'
+      stroke='currentColor'
+      className={className}
+    >
+      <path
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        d='M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3'
+      />
+    </svg>
+  );
+}
 
 interface CardProps {
   imgSrc?: string;
@@ -49,7 +67,9 @@ export default function Card({
           className='w-full'
         />
       </div>
-      <h4 className='text-xl font-semibold'><Link href={productionLink}>{title}</Link></h4>
+      <h4 className='text-xl font-semibold'>
+        <Link href={productionLink}>{title}</Link>
+      </h4>
       <p className='text-sm line-clamp-3'>{description}</p>
       <ul className='flex gap-2 my-4 flex-wrap'>
         {stack.map((s, idx) => (
